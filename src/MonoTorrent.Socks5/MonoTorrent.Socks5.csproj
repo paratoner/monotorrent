@@ -1,13 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <GitCommitsRelativeTo>$([MSBuild]::GetDirectoryNameOfFileAbove ('$(MSBuildThisFileDirectory)', 'version_socks5.txt'))\</GitCommitsRelativeTo>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="DotProxify" Version="0.0.0.2" />
-    <PackageReference Include="MonoTorrent" Version="[3.0,4.0)" ExcludeAssets="build" />
   </ItemGroup>
 
   <ItemGroup>
