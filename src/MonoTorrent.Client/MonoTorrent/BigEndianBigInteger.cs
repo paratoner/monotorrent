@@ -36,7 +36,6 @@ namespace MonoTorrent
 {
     struct BigEndianBigInteger : IComparable<BigEndianBigInteger>, IEquatable<BigEndianBigInteger>
     {
-#if !NETSTANDARD2_1
         // If we are not targeting netstandard 2.1 then the methods we want to use may exist
         // at runtime even though they do not exist at compiletime. Let's do a quick reflection
         // check for the .ctor and ToByteArray overloads which allow us to ensure the byte[] is
@@ -117,7 +116,6 @@ namespace MonoTorrent
                 result[i] = littleEndianArray[count - i - 1];
             return result;
         }
-#endif
 
         public static BigEndianBigInteger Parse (string value)
         {
@@ -139,7 +137,7 @@ namespace MonoTorrent
         public BigEndianBigInteger (byte[] value)
         {
 #if NETSTANDARD2_1
-            Value = new BigInteger (littleEndianArray, true, true);
+            Value = new BigInteger (value, true, true);
 #else
             Value = OptimisedCtor (value);
 #endif
