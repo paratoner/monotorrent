@@ -139,6 +139,7 @@ namespace MonoTorrent
         public BigEndianBigInteger (byte[] value)
         {
 #if NETSTANDARD2_1
+            byte[] littleEndianArray = new byte[value.Length + 1];
             Value = new BigInteger (littleEndianArray, true, true);
 #else
             Value = OptimisedCtor (value);

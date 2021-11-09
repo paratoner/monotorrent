@@ -35,7 +35,7 @@ using MonoTorrent.BEncoding;
 
 namespace MonoTorrent.Tracker.Listeners
 {
-    abstract class TrackerListener : ITrackerListener
+    public abstract class TrackerListener : ITrackerListener
     {
         public ListenerStatus Status { get; private set; }
 
